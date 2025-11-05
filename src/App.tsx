@@ -38,19 +38,19 @@ function WelcomePage() {
           </p>
           <div className="pt-6 space-y-3 text-left">
             <div className="flex items-start space-x-3">
-              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Checkmark">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <p className="text-gray-700">Backend configurado con Django + PostgreSQL + Redis</p>
             </div>
             <div className="flex items-start space-x-3">
-              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Checkmark">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <p className="text-gray-700">Frontend configurado con React + TypeScript + Tailwind CSS</p>
             </div>
             <div className="flex items-start space-x-3">
-              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Checkmark">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <p className="text-gray-700">Docker Compose listo para desarrollo</p>

@@ -57,7 +57,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       expect(screen.getByLabelText(/contraseña actual/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/nueva contraseña/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/^nueva contraseña[^a-z]/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/confirmar nueva contraseña/i)).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /cambiar contraseña/i })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /cancelar/i })).toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -90,7 +90,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -100,16 +100,16 @@ describe('ChangePassword Component', () => {
     });
 
     it('should redirect to dashboard after successful password change', async () => {
-      const user = userEvent.setup();
+      const user = userEvent.setup({ delay: null }); // Use null delay with fake timers
       mockChangePassword.mockResolvedValueOnce(undefined);
-
-      vi.useFakeTimers();
 
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
+
+      vi.useFakeTimers();
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
       await waitFor(() => {
@@ -152,7 +152,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -174,7 +174,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -189,7 +189,7 @@ describe('ChangePassword Component', () => {
 
       renderChangePassword();
 
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -206,7 +206,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'weak');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'weak');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'weak');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -223,7 +223,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'DifferentPassword789');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -240,7 +240,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'SamePassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'SamePassword123');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'SamePassword123');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'SamePassword123');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -257,7 +257,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'newpassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'newpassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'newpassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -274,7 +274,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NEWPASSWORD456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NEWPASSWORD456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NEWPASSWORD456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -291,7 +291,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -316,7 +316,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       expect(screen.getByLabelText(/contraseña actual/i)).toBeDisabled();
-      expect(screen.getByLabelText(/nueva contraseña/i)).toBeDisabled();
+      expect(screen.getByLabelText(/^nueva contraseña[^a-z]/i)).toBeDisabled();
       expect(screen.getByLabelText(/confirmar nueva contraseña/i)).toBeDisabled();
       expect(screen.getByRole('button', { name: /actualizando/i })).toBeDisabled();
       expect(screen.getByRole('button', { name: /cancelar/i })).toBeDisabled();
@@ -329,13 +329,13 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
       await waitFor(() => {
         expect(screen.getByLabelText(/contraseña actual/i)).toBeDisabled();
-        expect(screen.getByLabelText(/nueva contraseña/i)).toBeDisabled();
+        expect(screen.getByLabelText(/^nueva contraseña[^a-z]/i)).toBeDisabled();
         expect(screen.getByLabelText(/confirmar nueva contraseña/i)).toBeDisabled();
       });
     });
@@ -347,13 +347,13 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
       await waitFor(() => {
         expect(screen.getByLabelText(/contraseña actual/i)).toHaveValue('');
-        expect(screen.getByLabelText(/nueva contraseña/i)).toHaveValue('');
+        expect(screen.getByLabelText(/^nueva contraseña[^a-z]/i)).toHaveValue('');
         expect(screen.getByLabelText(/confirmar nueva contraseña/i)).toHaveValue('');
       });
     });
@@ -384,7 +384,7 @@ describe('ChangePassword Component', () => {
       };
 
       await user.type(screen.getByLabelText(/contraseña actual/i), formData.old_password);
-      await user.type(screen.getByLabelText(/nueva contraseña/i), formData.new_password);
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), formData.new_password);
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), formData.new_password_confirm);
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -417,7 +417,7 @@ describe('ChangePassword Component', () => {
     it('should render card with proper header', () => {
       renderChangePassword();
 
-      expect(screen.getByText(/cambiar contraseña/i)).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /cambiar contraseña/i })).toBeInTheDocument();
       expect(screen.getByText(/actualiza tu contraseña de forma segura/i)).toBeInTheDocument();
     });
 
@@ -441,7 +441,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 
@@ -478,7 +478,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       await user.type(screen.getByLabelText(/contraseña actual/i), 'OldPassword123');
-      await user.type(screen.getByLabelText(/nueva contraseña/i), 'NewPassword456');
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), 'NewPassword456');
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), 'NewPassword456');
 
       const startTime = performance.now();
@@ -495,7 +495,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       const oldPasswordInput = screen.getByLabelText(/contraseña actual/i);
-      const newPasswordInput = screen.getByLabelText(/nueva contraseña/i);
+      const newPasswordInput = screen.getByLabelText(/^nueva contraseña[^a-z]/i);
       const confirmPasswordInput = screen.getByLabelText(/confirmar nueva contraseña/i);
 
       expect(oldPasswordInput).toHaveAttribute('type', 'password');
@@ -507,7 +507,7 @@ describe('ChangePassword Component', () => {
       renderChangePassword();
 
       expect(screen.getByLabelText(/contraseña actual/i)).toHaveAttribute('autocomplete', 'current-password');
-      expect(screen.getByLabelText(/nueva contraseña/i)).toHaveAttribute('autocomplete', 'new-password');
+      expect(screen.getByLabelText(/^nueva contraseña[^a-z]/i)).toHaveAttribute('autocomplete', 'new-password');
       expect(screen.getByLabelText(/confirmar nueva contraseña/i)).toHaveAttribute('autocomplete', 'new-password');
     });
 
@@ -533,7 +533,7 @@ describe('ChangePassword Component', () => {
       for (const { pwd, error } of weakPasswords) {
         // Clear fields
         const oldPwdInput = screen.getByLabelText(/contraseña actual/i);
-        const newPwdInput = screen.getByLabelText(/nueva contraseña/i);
+        const newPwdInput = screen.getByLabelText(/^nueva contraseña[^a-z]/i);
         const confirmPwdInput = screen.getByLabelText(/confirmar nueva contraseña/i);
 
         await user.clear(oldPwdInput);
@@ -559,7 +559,7 @@ describe('ChangePassword Component', () => {
       const samePassword = 'SamePassword123';
 
       await user.type(screen.getByLabelText(/contraseña actual/i), samePassword);
-      await user.type(screen.getByLabelText(/nueva contraseña/i), samePassword);
+      await user.type(screen.getByLabelText(/^nueva contraseña[^a-z]/i), samePassword);
       await user.type(screen.getByLabelText(/confirmar nueva contraseña/i), samePassword);
       await user.click(screen.getByRole('button', { name: /cambiar contraseña/i }));
 

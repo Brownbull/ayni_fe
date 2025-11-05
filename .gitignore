@@ -32,3 +32,4 @@ tests/results/
 # Environment variables
 .env
 .env.production
+fenv/

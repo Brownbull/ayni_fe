@@ -305,7 +305,7 @@ describe('Login Component', () => {
     it('should render card with proper header', () => {
       renderLogin();
 
-      expect(screen.getByText(/iniciar sesión/i)).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /iniciar sesión/i })).toBeInTheDocument();
       expect(screen.getByText(/ingresa a tu cuenta para ver tus analytics/i)).toBeInTheDocument();
     });
 
@@ -360,7 +360,7 @@ describe('Login Component', () => {
     it('should use password input type for password field', () => {
       renderLogin();
 
-      const passwordInput = screen.getByLabelText(/^contraseña$/i);
+      const passwordInput = screen.getByLabelText(/contraseña/i);
       expect(passwordInput).toHaveAttribute('type', 'password');
     });
 
@@ -368,7 +368,7 @@ describe('Login Component', () => {
       renderLogin();
 
       expect(screen.getByLabelText(/correo electrónico/i)).toHaveAttribute('autocomplete', 'email');
-      expect(screen.getByLabelText(/^contraseña$/i)).toHaveAttribute('autocomplete', 'current-password');
+      expect(screen.getByLabelText(/contraseña/i)).toHaveAttribute('autocomplete', 'current-password');
     });
 
     it('should not expose password in DOM', () => {

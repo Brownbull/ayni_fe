@@ -59,7 +59,7 @@ describe('Register Component', () => {
 
       expect(screen.getByLabelText(/correo electrónico/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/nombre de usuario/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/^contraseña$/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/^contraseña[^c]/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/confirmar contraseña/i)).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /crear cuenta/i })).toBeInTheDocument();
     });
@@ -72,7 +72,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -94,7 +94,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -108,7 +108,7 @@ describe('Register Component', () => {
 
       renderRegister();
 
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
 
       await waitFor(() => {
         expect(screen.getByText(/seguridad:/i)).toBeInTheDocument();
@@ -144,7 +144,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -171,7 +171,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'invalid-email');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -189,7 +189,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'ab');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -207,7 +207,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'user@name');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -225,7 +225,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -243,7 +243,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'PASSWORD123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'PASSWORD123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'PASSWORD123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -261,7 +261,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -279,7 +279,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Pass1');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Pass1');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Pass1');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -297,7 +297,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password456');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -338,7 +338,7 @@ describe('Register Component', () => {
 
       expect(screen.getByLabelText(/correo electrónico/i)).toBeDisabled();
       expect(screen.getByLabelText(/nombre de usuario/i)).toBeDisabled();
-      expect(screen.getByLabelText(/^contraseña$/i)).toBeDisabled();
+      expect(screen.getByLabelText(/^contraseña[^c]/i)).toBeDisabled();
       expect(screen.getByLabelText(/confirmar contraseña/i)).toBeDisabled();
       expect(screen.getByRole('button', { name: /creando cuenta/i })).toBeDisabled();
     });
@@ -351,7 +351,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), longUsername);
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
 
       // Should accept 30 characters
@@ -363,7 +363,7 @@ describe('Register Component', () => {
 
       renderRegister();
 
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Pass1234');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Pass1234');
 
       await waitFor(() => {
         expect(screen.getByText(/débil/i)).toBeInTheDocument();
@@ -375,7 +375,7 @@ describe('Register Component', () => {
 
       renderRegister();
 
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'MyP@ssw0rd!2024');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'MyP@ssw0rd!2024');
 
       await waitFor(() => {
         expect(screen.getByText(/fuerte/i)).toBeInTheDocument();
@@ -400,7 +400,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), formData.email);
       await user.type(screen.getByLabelText(/nombre de usuario/i), formData.username);
-      await user.type(screen.getByLabelText(/^contraseña$/i), formData.password);
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), formData.password);
       await user.type(screen.getByLabelText(/confirmar contraseña/i), formData.password_confirm);
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -457,7 +457,7 @@ describe('Register Component', () => {
     it('should render card with proper header', () => {
       renderRegister();
 
-      expect(screen.getByText(/crear cuenta/i)).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /crear cuenta/i })).toBeInTheDocument();
       expect(screen.getByText(/regístrate gratis y empieza hoy/i)).toBeInTheDocument();
     });
 
@@ -480,7 +480,7 @@ describe('Register Component', () => {
 
       renderRegister();
 
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
 
       await waitFor(() => {
         const progressBar = screen.getByRole('progressbar');
@@ -513,7 +513,7 @@ describe('Register Component', () => {
       renderRegister();
 
       const startTime = performance.now();
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'P');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'P');
       const endTime = performance.now();
 
       expect(endTime - startTime).toBeLessThan(500); // Should update quickly
@@ -525,7 +525,7 @@ describe('Register Component', () => {
     it('should use password input type for password fields', () => {
       renderRegister();
 
-      const passwordInput = screen.getByLabelText(/^contraseña$/i);
+      const passwordInput = screen.getByLabelText(/^contraseña[^c]/i);
       const confirmInput = screen.getByLabelText(/confirmar contraseña/i);
 
       expect(passwordInput).toHaveAttribute('type', 'password');
@@ -537,7 +537,7 @@ describe('Register Component', () => {
 
       expect(screen.getByLabelText(/correo electrónico/i)).toHaveAttribute('autocomplete', 'email');
       expect(screen.getByLabelText(/nombre de usuario/i)).toHaveAttribute('autocomplete', 'username');
-      expect(screen.getByLabelText(/^contraseña$/i)).toHaveAttribute('autocomplete', 'new-password');
+      expect(screen.getByLabelText(/^contraseña[^c]/i)).toHaveAttribute('autocomplete', 'new-password');
       expect(screen.getByLabelText(/confirmar contraseña/i)).toHaveAttribute('autocomplete', 'new-password');
     });
 
@@ -555,7 +555,7 @@ describe('Register Component', () => {
 
       await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
       await user.type(screen.getByLabelText(/nombre de usuario/i), '<script>alert("xss")</script>');
-      await user.type(screen.getByLabelText(/^contraseña$/i), 'Password123');
+      await user.type(screen.getByLabelText(/^contraseña[^c]/i), 'Password123');
       await user.type(screen.getByLabelText(/confirmar contraseña/i), 'Password123');
       await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
@@ -574,12 +574,12 @@ describe('Register Component', () => {
       const weakPasswords = ['password', '12345678', 'PASSWORD', 'Pass1'];
 
       for (const weakPassword of weakPasswords) {
-        await user.clear(screen.getByLabelText(/^contraseña$/i));
+        await user.clear(screen.getByLabelText(/^contraseña[^c]/i));
         await user.clear(screen.getByLabelText(/confirmar contraseña/i));
 
         await user.type(screen.getByLabelText(/correo electrónico/i), 'test@example.com');
         await user.type(screen.getByLabelText(/nombre de usuario/i), 'testuser');
-        await user.type(screen.getByLabelText(/^contraseña$/i), weakPassword);
+        await user.type(screen.getByLabelText(/^contraseña[^c]/i), weakPassword);
         await user.type(screen.getByLabelText(/confirmar contraseña/i), weakPassword);
         await user.click(screen.getByRole('button', { name: /crear cuenta/i }));
 
